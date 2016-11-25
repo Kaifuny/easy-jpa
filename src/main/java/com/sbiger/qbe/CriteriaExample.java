@@ -13,6 +13,8 @@ public interface CriteriaExample<T> {
 
     CriteriaExample<T> desc();
 
+    CriteriaExample<T> orderby();
+
     CriteriaExample<T> avg();
 
     CriteriaExample<T> sum();
