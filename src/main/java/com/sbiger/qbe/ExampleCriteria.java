@@ -60,7 +60,7 @@ public interface ExampleCriteria<T> extends Specification {
 
 //    CriteriaExample<T> isNotNull();
 
-    ExampleCriteria<T> equal(BooleanOperator type, Boolean condition, String property, Object... values);
+    ExampleCriteria<T> equal(BooleanOperator type, Boolean condition, String property, Object value);
 
 //    CriteriaExample<T> notEqual();
 
