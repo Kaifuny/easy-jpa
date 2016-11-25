@@ -8,6 +8,4 @@ import java.io.Serializable;
 /**
  * Created by sbiger on 2016/11/4
  */
-public interface UserReponsitory extends JpaRepository<User, Serializable> , JpaSpecificationExecutor<User> {
-    User findById(Integer id);
-}
+public interface UserReponsitory extends JpaRepository<User, Serializable> , JpaSpecificationExecutor<User> {}

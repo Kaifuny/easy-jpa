@@ -1,2 +1,2 @@
 # sbiger-jpa-qbe
-query by example(QBE) on jpa 2.0
+Query By Example(QBE) on jpa(depends on spring-data-jpa)
