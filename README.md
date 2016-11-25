@@ -1,5 +1,5 @@
 # sbiger-jpa-qbe
-Query By Example(QBE) on jpa
+Java Persistence API(JPA) on Query By Example(QBE)
 
 # Unit Test
 * Java Version
