@@ -66,7 +66,11 @@ public interface ExampleCriteria<T> extends Specification {
     ExampleCriteria<T> andEqual(String property, Object value);
     ExampleCriteria<T> orEqual(String property, Object value);
 
-//    CriteriaExample<T> notEqual();
+    ExampleCriteria<T> notEqual(BooleanOperator type, Boolean condition, String property, Object value);
+    ExampleCriteria<T> andNotEqual(Boolean condition, String property, Object value);
+    ExampleCriteria<T> orNotEqual(Boolean condition, String property, Object value);
+    ExampleCriteria<T> andNotEqual(String property, Object value);
+    ExampleCriteria<T> orNotEqual(String property, Object value);
 
 //    CriteriaExample<T> greaterThan();
 

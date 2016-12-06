@@ -2,6 +2,7 @@ package com.sbiger.qbe;
 
 import com.sbiger.qbe.specification.AbstractSpecification;
 import com.sbiger.qbe.specification.EqualSpecification;
+import com.sbiger.qbe.specification.NotEqualSpecification;
 
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
@@ -86,6 +87,38 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     public ExampleCriteria orEqual(String property, Object value) {
         equal(BooleanOperator.OR, true, property, value);
         return this;
+    }
+
+    @Override
+    public ExampleCriteria notEqual(BooleanOperator type, Boolean condition, String property, Object value) {
+        if (condition) {
+            if (type.equals(BooleanOperator.OR)) {
+                orClassList.add(new NotEqualSpecification(type, property, value));
+            } else {
+                andClassList.add(new NotEqualSpecification(type, property, value));
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andNotEqual(Boolean condition, String property, Object value) {
+        return notEqual(BooleanOperator.AND, condition, property, value);
+    }
+
+    @Override
+    public ExampleCriteria orNotEqual(Boolean condition, String property, Object value) {
+        return notEqual(BooleanOperator.OR, condition, property, value);
+    }
+
+    @Override
+    public ExampleCriteria andNotEqual(String property, Object value) {
+        return notEqual(BooleanOperator.AND, true, property, value);
+    }
+
+    @Override
+    public ExampleCriteria orNotEqual(String property, Object value) {
+        return notEqual(BooleanOperator.OR, true, property, value);
     }
 
     @Override

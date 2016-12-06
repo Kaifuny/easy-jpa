@@ -18,8 +18,7 @@ public class UserService {
 
     public List<User> findAll(){
         Example<User> example = new Example<User>();
-        example.or().andEqual("id","1")
-                .orEqual("id","2");
+        example.or().andNotEqual("id","1");
         return userReponsitory.findAll(example);
     }
 }

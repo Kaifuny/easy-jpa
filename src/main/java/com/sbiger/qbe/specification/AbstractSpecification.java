@@ -14,6 +14,6 @@ public class AbstractSpecification<T> implements Specification<T> {
 
     @Override
     public Predicate toPredicate(Root<T> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-        return null;
+        return toPredicate((From)root, criteriaQuery, criteriaBuilder);
     }
 }

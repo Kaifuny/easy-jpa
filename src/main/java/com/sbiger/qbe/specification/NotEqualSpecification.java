@@ -1,28 +1,27 @@
 package com.sbiger.qbe.specification;
 
 import com.sbiger.qbe.ExampleCriteria;
-import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.*;
 
 /**
- * Created by sbiger on 2016-11-25.
+ * Created by sbiger on 2016-12-06.
  */
-public class EqualSpecification<T> extends AbstractSpecification{
+public class NotEqualSpecification extends AbstractSpecification {
     private final String property;
 
     private final Object value;
 
     private final ExampleCriteria.BooleanOperator type;
 
-    public EqualSpecification(ExampleCriteria.BooleanOperator type, String property, Object value) {
-        this.type = type;
+    public NotEqualSpecification(ExampleCriteria.BooleanOperator type, String property, Object value){
         this.property = property;
         this.value = value;
+        this.type = type;
     }
 
     private Predicate getPredicate(From root, CriteriaBuilder cb, Object value, String field) {
-        return null == value ? cb.isNull(root.get(field)) : cb.equal(root.get(field), value);
+        return null == value ? cb.isNull(root.get(field)) : cb.notEqual(root.get(field), value);
     }
 
     @Override
