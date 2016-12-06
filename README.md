@@ -29,12 +29,12 @@ Java Persistence API(JPA) on Query By Example(QBE)
 ```
 
 # How to Dev
-## Unit Test
+* Test
 ```
  mvn test
 ```
 
-## Package
+* Package
 ```
  mvn clean
  mvn package
