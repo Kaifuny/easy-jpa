@@ -8,7 +8,7 @@ import javax.persistence.criteria.*;
 /**
  * Created by sbiger on 2016-11-25.
  */
-public class EqualSpecification<T> extends AbstractSpecification implements Specification<T>{
+public class EqualSpecification<T> extends AbstractSpecification{
     private final String property;
 
     private final Object value;
@@ -26,7 +26,12 @@ public class EqualSpecification<T> extends AbstractSpecification implements Spec
     }
 
     @Override
-    public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-        return  getPredicate(root, cb, value, property);
+    public Predicate toPredicate(From root, CriteriaQuery query, CriteriaBuilder cb) {
+        return getPredicate(root, cb, value, property);
+    }
+
+    @Override
+    public Predicate toPredicate(Root root, CriteriaQuery criteriaQuery, CriteriaBuilder criteriaBuilder) {
+        return toPredicate((From)root, criteriaQuery, criteriaBuilder);
     }
 }

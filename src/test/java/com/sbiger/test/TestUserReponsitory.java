@@ -1,6 +1,8 @@
 package com.sbiger.test;
 
 import com.sbiger.entity.User;
+import com.sbiger.qbe.Example;
+import com.sbiger.qbe.ExampleCriteria;
 import com.sbiger.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

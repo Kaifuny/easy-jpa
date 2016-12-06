@@ -67,18 +67,42 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
         }
         return this;
     }
+    @Override
+    public ExampleCriteria andEqual(Boolean condition, String property, Object value) {
+        equal(BooleanOperator.AND, condition, property, value);
+        return this;
+    }
+    @Override
+    public ExampleCriteria orEqual(Boolean condition, String property, Object value) {
+        equal(BooleanOperator.OR, condition, property, value);
+        return this;
+    }
+    @Override
+    public ExampleCriteria andEqual(String property, Object value) {
+        equal(BooleanOperator.AND, true, property, value);
+        return this;
+    }
+    @Override
+    public ExampleCriteria orEqual(String property, Object value) {
+        equal(BooleanOperator.OR, true, property, value);
+        return this;
+    }
 
     @Override
     public Predicate toPredicate(Root root, CriteriaQuery query, CriteriaBuilder cb) {
         From from = root;
-
         for (JoinClass c : joinClassList) {
             from = from.join(String.valueOf(c.getClassName()), c.getType());
         }
 
-        Predicate[] ands = null;
+        final From finalFrom = from;
+        Predicate[] ands = this.andClassList.stream()
+                .map(spec -> spec.toPredicate(finalFrom, query, cb))
+                .toArray(Predicate[]::new);
 
-        Predicate[] ors = null;
+        Predicate[] ors = this.orClassList.stream()
+                .map(spec -> spec.toPredicate(finalFrom, query, cb))
+                .toArray(Predicate[]::new);
 
         return cb.or(cb.and(ands), cb.or(ors));
     }

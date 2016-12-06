@@ -1,6 +1,7 @@
 package com.sbiger.service;
 
 import com.sbiger.entity.User;
+import com.sbiger.qbe.Example;
 import com.sbiger.reponsitory.UserReponsitory;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class UserService {
     UserReponsitory userReponsitory;
 
     public List<User> findAll(){
-        return userReponsitory.findAll();
+        Example<User> example = new Example<User>();
+        example.or().andEqual("id","1")
+                .orEqual("id","2");
+        return userReponsitory.findAll(example);
     }
 }

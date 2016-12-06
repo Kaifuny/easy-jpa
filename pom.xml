@@ -17,8 +17,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.3</version>
                     <configuration>
-                        <source>1.7</source> <!-- yours Java version -->
-                        <target>1.7</target> <!-- yours Java version -->
+                        <source>1.8</source> <!-- yours Java version -->
+                        <target>1.8</target> <!-- yours Java version -->
                     </configuration>
                 </plugin>
             </plugins>
