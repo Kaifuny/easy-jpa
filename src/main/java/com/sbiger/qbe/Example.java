@@ -1,8 +1,6 @@
 package com.sbiger.qbe;
 
-import com.sbiger.qbe.specification.AbstractSpecification;
-import com.sbiger.qbe.specification.EqualSpecification;
-import com.sbiger.qbe.specification.NotEqualSpecification;
+import com.sbiger.qbe.specification.*;
 
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
@@ -73,16 +71,19 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
         equal(BooleanOperator.AND, condition, property, value);
         return this;
     }
+
     @Override
     public ExampleCriteria orEqual(Boolean condition, String property, Object value) {
         equal(BooleanOperator.OR, condition, property, value);
         return this;
     }
+
     @Override
     public ExampleCriteria andEqual(String property, Object value) {
         equal(BooleanOperator.AND, true, property, value);
         return this;
     }
+
     @Override
     public ExampleCriteria orEqual(String property, Object value) {
         equal(BooleanOperator.OR, true, property, value);
@@ -119,6 +120,70 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     @Override
     public ExampleCriteria orNotEqual(String property, Object value) {
         return notEqual(BooleanOperator.OR, true, property, value);
+    }
+
+    @Override
+    public ExampleCriteria like(BooleanOperator type, Boolean condition, String property, String value) {
+        if (condition) {
+            if (type.equals(BooleanOperator.OR)) {
+                orClassList.add(new LikeSpecification(type, property, value));
+            } else {
+                andClassList.add(new LikeSpecification(type, property, value));
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andLike(BooleanOperator type, Boolean condition, String property, String value) {
+        return like(BooleanOperator.AND, condition, property, value);
+    }
+
+    @Override
+    public ExampleCriteria orLike(BooleanOperator type, Boolean condition, String property, String value) {
+        return like(BooleanOperator.OR, condition, property, value);
+    }
+
+    @Override
+    public ExampleCriteria andLike(BooleanOperator type, String property, String value) {
+        return like(BooleanOperator.AND, true, property, value);
+    }
+
+    @Override
+    public ExampleCriteria orLike(BooleanOperator type, String property, String value) {
+        return like(BooleanOperator.OR, true, property, value);
+    }
+
+    @Override
+    public ExampleCriteria notLike(BooleanOperator type, Boolean condition, String property, String value) {
+        if (condition) {
+            if (type.equals(BooleanOperator.OR)) {
+                orClassList.add(new NotLikeSpecification(type, property, value));
+            } else {
+                andClassList.add(new NotLikeSpecification(type, property, value));
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andNotLike(BooleanOperator type, Boolean condition, String property, String value) {
+        return notLike(BooleanOperator.AND, condition, property, value);
+    }
+
+    @Override
+    public ExampleCriteria orNotLike(BooleanOperator type, Boolean condition, String property, String value) {
+        return notLike(BooleanOperator.OR, condition, property, value);
+    }
+
+    @Override
+    public ExampleCriteria andNotLike(BooleanOperator type, String property, String value) {
+        return notLike(BooleanOperator.AND, true, property, value);
+    }
+
+    @Override
+    public ExampleCriteria orNotLike(BooleanOperator type, String property, String value) {
+        return notLike(BooleanOperator.OR, true, property, value);
     }
 
     @Override

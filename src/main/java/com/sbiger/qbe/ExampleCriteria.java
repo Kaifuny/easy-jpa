@@ -124,9 +124,17 @@ public interface ExampleCriteria<T> extends Specification {
 
 //    CriteriaExample<T> isNotMember();
 
-//    CriteriaExample<T> like();
+    ExampleCriteria<T> like(BooleanOperator type, Boolean condition, String property, String value);
+    ExampleCriteria<T> andLike(BooleanOperator type, Boolean condition, String property, String value);
+    ExampleCriteria<T> orLike(BooleanOperator type, Boolean condition, String property, String value);
+    ExampleCriteria<T> andLike(BooleanOperator type, String property, String value);
+    ExampleCriteria<T> orLike(BooleanOperator type, String property, String value);
 
-//    CriteriaExample<T> notLike();
+    ExampleCriteria<T> notLike(BooleanOperator type, Boolean condition, String property, String value);
+    ExampleCriteria<T> andNotLike(BooleanOperator type, Boolean condition, String property, String value);
+    ExampleCriteria<T> orNotLike(BooleanOperator type, Boolean condition, String property, String value);
+    ExampleCriteria<T> andNotLike(BooleanOperator type, String property, String value);
+    ExampleCriteria<T> orNotLike(BooleanOperator type, String property, String value);
 
 //    CriteriaExample<T> concat();
 
