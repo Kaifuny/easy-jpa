@@ -23,12 +23,12 @@ public class LikeSpecification<T> extends AbstractSpecification<T>{
         this.value = value;
     }
 
-    private Predicate getPredicate(From root, CriteriaBuilder cb, String value, String field) {
+    private Predicate getPredicate(From root, CriteriaBuilder cb, String field, String value) {
         return null == value ? cb.isNull(root.get(field)) : cb.like(root.get(field), value);
     }
 
     @Override
     public Predicate toPredicate(From root, CriteriaQuery query, CriteriaBuilder cb) {
-        return getPredicate(root, cb, value, property);
+        return getPredicate(root, cb, property, value);
     }
 }

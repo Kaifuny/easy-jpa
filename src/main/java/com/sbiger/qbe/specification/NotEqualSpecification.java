@@ -20,12 +20,12 @@ public class NotEqualSpecification extends AbstractSpecification {
         this.type = type;
     }
 
-    private Predicate getPredicate(From root, CriteriaBuilder cb, Object value, String field) {
+    private Predicate getPredicate(From root, CriteriaBuilder cb, String field, Object value) {
         return null == value ? cb.isNull(root.get(field)) : cb.notEqual(root.get(field), value);
     }
 
     @Override
     public Predicate toPredicate(From root, CriteriaQuery query, CriteriaBuilder cb) {
-        return getPredicate(root, cb, value, property);
+        return getPredicate(root, cb, property, value);
     }
 }

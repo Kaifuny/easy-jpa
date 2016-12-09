@@ -18,7 +18,11 @@ public class UserService {
 
     public List<User> findAll(){
         Example<User> example = new Example<User>();
-        example.or().andNotEqual("id","1");
+
+        Integer[] arr = new Integer[2];
+        arr[0] = 1;
+        arr[1] = 2;
+        example.or().andNotIn("id", arr);
         return userReponsitory.findAll(example);
     }
 }
