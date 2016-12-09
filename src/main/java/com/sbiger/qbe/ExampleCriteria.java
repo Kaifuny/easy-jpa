@@ -28,7 +28,17 @@ public interface ExampleCriteria<T> extends Specification {
 
 //    ExampleCriteria<T> max();
 
-//    ExampleCriteria<T> in();
+    ExampleCriteria<T> in(BooleanOperator type, Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> andIn(Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> orIn(Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> andIn(String property, Object[] value);
+    ExampleCriteria<T> orIn(String property, Object[] value);
+
+    ExampleCriteria<T> notIn(BooleanOperator type, Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> andNotIn(Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> orNotIn(Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> andNotIn(String property, Object[] value);
+    ExampleCriteria<T> orNotIn(String property, Object[] value);
 
 //    ExampleCriteria<T> greatest();
 
@@ -125,16 +135,16 @@ public interface ExampleCriteria<T> extends Specification {
 //    ExampleCriteria<T> isNotMember();
 
     ExampleCriteria<T> like(BooleanOperator type, Boolean condition, String property, String value);
-    ExampleCriteria<T> andLike(BooleanOperator type, Boolean condition, String property, String value);
-    ExampleCriteria<T> orLike(BooleanOperator type, Boolean condition, String property, String value);
-    ExampleCriteria<T> andLike(BooleanOperator type, String property, String value);
-    ExampleCriteria<T> orLike(BooleanOperator type, String property, String value);
+    ExampleCriteria<T> andLike(Boolean condition, String property, String value);
+    ExampleCriteria<T> orLike(Boolean condition, String property, String value);
+    ExampleCriteria<T> andLike(String property, String value);
+    ExampleCriteria<T> orLike(String property, String value);
 
     ExampleCriteria<T> notLike(BooleanOperator type, Boolean condition, String property, String value);
-    ExampleCriteria<T> andNotLike(BooleanOperator type, Boolean condition, String property, String value);
-    ExampleCriteria<T> orNotLike(BooleanOperator type, Boolean condition, String property, String value);
-    ExampleCriteria<T> andNotLike(BooleanOperator type, String property, String value);
-    ExampleCriteria<T> orNotLike(BooleanOperator type, String property, String value);
+    ExampleCriteria<T> andNotLike(Boolean condition, String property, String value);
+    ExampleCriteria<T> orNotLike(Boolean condition, String property, String value);
+    ExampleCriteria<T> andNotLike(String property, String value);
+    ExampleCriteria<T> orNotLike(String property, String value);
 
 //    ExampleCriteria<T> concat();
 

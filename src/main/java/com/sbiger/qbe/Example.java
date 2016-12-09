@@ -56,6 +56,70 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     }
 
     @Override
+    public ExampleCriteria in(BooleanOperator type, Boolean condition, String property, Object[] values) {
+        if (condition) {
+            if (type.equals(BooleanOperator.OR)) {
+                orClassList.add(new InSpecification(type, property, values));
+            } else {
+                andClassList.add(new InSpecification(type, property, values));
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andIn(Boolean condition, String property, Object[] values) {
+        return in(BooleanOperator.AND, condition, property, values);
+    }
+
+    @Override
+    public ExampleCriteria orIn(Boolean condition, String property, Object[] values) {
+        return in(BooleanOperator.OR, condition, property, values);
+    }
+
+    @Override
+    public ExampleCriteria andIn(String property, Object[] values) {
+        return andIn(true, property, values);
+    }
+
+    @Override
+    public ExampleCriteria orIn(String property, Object[] values) {
+        return orIn(true, property, values);
+    }
+
+    @Override
+    public ExampleCriteria notIn(BooleanOperator type, Boolean condition, String property, Object[] values) {
+        if (condition) {
+            if (type.equals(BooleanOperator.OR)) {
+                orClassList.add(new NotInSpecification(type, property, values));
+            } else {
+                andClassList.add(new NotInSpecification(type, property, values));
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andNotIn(Boolean condition, String property, Object[] values) {
+        return notIn(BooleanOperator.AND, condition, property, values);
+    }
+
+    @Override
+    public ExampleCriteria orNotIn(Boolean condition, String property, Object[] values) {
+        return notIn(BooleanOperator.OR, condition, property, values);
+    }
+
+    @Override
+    public ExampleCriteria andNotIn(String property, Object[] values) {
+        return andNotIn(true, property, values);
+    }
+
+    @Override
+    public ExampleCriteria orNotIn(String property, Object[] values) {
+        return orNotIn(true, property, values);
+    }
+
+    @Override
     public ExampleCriteria equal(BooleanOperator type, Boolean condition, String property, Object value) {
         if (condition) {
             if (type.equals(BooleanOperator.OR)) {
@@ -66,28 +130,25 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
         }
         return this;
     }
+
     @Override
     public ExampleCriteria andEqual(Boolean condition, String property, Object value) {
-        equal(BooleanOperator.AND, condition, property, value);
-        return this;
+        return equal(BooleanOperator.AND, condition, property, value);
     }
 
     @Override
     public ExampleCriteria orEqual(Boolean condition, String property, Object value) {
-        equal(BooleanOperator.OR, condition, property, value);
-        return this;
+        return equal(BooleanOperator.OR, condition, property, value);
     }
 
     @Override
     public ExampleCriteria andEqual(String property, Object value) {
-        equal(BooleanOperator.AND, true, property, value);
-        return this;
+        return andEqual(true, property, value);
     }
 
     @Override
     public ExampleCriteria orEqual(String property, Object value) {
-        equal(BooleanOperator.OR, true, property, value);
-        return this;
+        return orEqual(true, property, value);
     }
 
     @Override
@@ -114,12 +175,12 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
 
     @Override
     public ExampleCriteria andNotEqual(String property, Object value) {
-        return notEqual(BooleanOperator.AND, true, property, value);
+        return andNotEqual(true, property, value);
     }
 
     @Override
     public ExampleCriteria orNotEqual(String property, Object value) {
-        return notEqual(BooleanOperator.OR, true, property, value);
+        return orNotEqual(true, property, value);
     }
 
     @Override
@@ -135,23 +196,23 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     }
 
     @Override
-    public ExampleCriteria andLike(BooleanOperator type, Boolean condition, String property, String value) {
+    public ExampleCriteria andLike(Boolean condition, String property, String value) {
         return like(BooleanOperator.AND, condition, property, value);
     }
 
     @Override
-    public ExampleCriteria orLike(BooleanOperator type, Boolean condition, String property, String value) {
+    public ExampleCriteria orLike(Boolean condition, String property, String value) {
         return like(BooleanOperator.OR, condition, property, value);
     }
 
     @Override
-    public ExampleCriteria andLike(BooleanOperator type, String property, String value) {
-        return like(BooleanOperator.AND, true, property, value);
+    public ExampleCriteria andLike(String property, String value) {
+        return andLike(true, property, value);
     }
 
     @Override
-    public ExampleCriteria orLike(BooleanOperator type, String property, String value) {
-        return like(BooleanOperator.OR, true, property, value);
+    public ExampleCriteria orLike(String property, String value) {
+        return orLike(true, property, value);
     }
 
     @Override
@@ -167,23 +228,23 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     }
 
     @Override
-    public ExampleCriteria andNotLike(BooleanOperator type, Boolean condition, String property, String value) {
+    public ExampleCriteria andNotLike(Boolean condition, String property, String value) {
         return notLike(BooleanOperator.AND, condition, property, value);
     }
 
     @Override
-    public ExampleCriteria orNotLike(BooleanOperator type, Boolean condition, String property, String value) {
+    public ExampleCriteria orNotLike(Boolean condition, String property, String value) {
         return notLike(BooleanOperator.OR, condition, property, value);
     }
 
     @Override
-    public ExampleCriteria andNotLike(BooleanOperator type, String property, String value) {
-        return notLike(BooleanOperator.AND, true, property, value);
+    public ExampleCriteria andNotLike(String property, String value) {
+        return andNotLike(true, property, value);
     }
 
     @Override
-    public ExampleCriteria orNotLike(BooleanOperator type, String property, String value) {
-        return notLike(BooleanOperator.OR, true, property, value);
+    public ExampleCriteria orNotLike(String property, String value) {
+        return orNotLike(true, property, value);
     }
 
     @Override
