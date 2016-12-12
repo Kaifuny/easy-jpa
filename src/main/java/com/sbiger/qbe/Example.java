@@ -1,6 +1,7 @@
 package com.sbiger.qbe;
 
 import com.sbiger.qbe.specification.*;
+import org.springframework.data.domain.Range;
 
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
@@ -245,6 +246,38 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     @Override
     public ExampleCriteria orNotLike(String property, String value) {
         return orNotLike(true, property, value);
+    }
+
+    @Override
+    public ExampleCriteria between(BooleanOperator type, Boolean condition, String property, Range range) {
+        if (condition) {
+            if (type.equals(BooleanOperator.OR)) {
+                orClassList.add(new BetweenSpecification(type, property, range));
+            } else {
+                andClassList.add(new BetweenSpecification(type, property, range));
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andBetween(Boolean condition, String property, Range range) {
+        return between(BooleanOperator.AND, condition, property, range);
+    }
+
+    @Override
+    public ExampleCriteria orBetween(Boolean condition, String property, Range range) {
+        return between(BooleanOperator.OR, condition, property, range);
+    }
+
+    @Override
+    public ExampleCriteria andBetween(String property, Range range) {
+        return andBetween(true, property, range);
+    }
+
+    @Override
+    public ExampleCriteria orBetween(String property, Range range) {
+        return orBetween(true, property, range);
     }
 
     @Override

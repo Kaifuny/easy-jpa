@@ -1,5 +1,6 @@
 package com.sbiger.qbe;
 
+import org.springframework.data.domain.Range;
 import org.springframework.data.jpa.domain.Specification;
 
 /**
@@ -90,7 +91,11 @@ public interface ExampleCriteria<T> extends Specification {
 
 //    ExampleCriteria<T> lessThanOrEqualTo();
 
-//    ExampleCriteria<T> between();
+    ExampleCriteria<T> between(BooleanOperator type, Boolean condition, String property, Range range);
+    ExampleCriteria<T> andBetween(Boolean condition, String property, Range range);
+    ExampleCriteria<T> orBetween(Boolean condition, String property, Range range);
+    ExampleCriteria<T> andBetween(String property, Range range);
+    ExampleCriteria<T> orBetween(String property, Range range);
 
 //    ExampleCriteria<T> gt();
 
