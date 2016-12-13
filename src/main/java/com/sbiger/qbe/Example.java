@@ -514,7 +514,7 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
         for (JoinClass c : joinClassList) {
             from = from.join(String.valueOf(c.getClassName()), c.getType());
         }
-
+        
         final From finalFrom = from;
         Predicate[] ands = this.andClassList.stream()
                 .map(spec -> spec.toPredicate(finalFrom, query, cb))
