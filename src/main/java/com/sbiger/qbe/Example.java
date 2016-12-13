@@ -281,6 +281,234 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     }
 
     @Override
+    public ExampleCriteria greaterThan(BooleanOperator type, Boolean condition, String property, Number number) {
+        if (condition) {
+            if (type.equals(BooleanOperator.OR)) {
+                orClassList.add(new GtSpecification(type, property, number));
+            } else {
+                andClassList.add(new GtSpecification(type, property, number));
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andGreaterThan(Boolean condition, String property, Number number) {
+        return greaterThan(BooleanOperator.AND, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orGreaterThan(Boolean condition, String property, Number number) {
+        return greaterThan(BooleanOperator.OR, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andGreaterThan(String property, Number number) {
+        return andGreaterThan(true, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orGreaterThan(String property, Number number) {
+        return orGreaterThan(true, property, number);
+    }
+
+    @Override
+    public ExampleCriteria greaterThanOrEqualTo(BooleanOperator type, Boolean condition, String property, Number number) {
+        if (condition) {
+            if (type.equals(BooleanOperator.OR)) {
+                orClassList.add(new GeSpecification(type, property, number));
+            } else {
+                andClassList.add(new GeSpecification(type, property, number));
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andGreaterThanOrEqualTo(Boolean condition, String property, Number number) {
+        return greaterThanOrEqualTo(BooleanOperator.AND, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orGreaterThanOrEqualTo(Boolean condition, String property, Number number) {
+        return greaterThanOrEqualTo(BooleanOperator.OR, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andGreaterThanOrEqualTo(String property, Number number) {
+        return andGreaterThanOrEqualTo(true, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orGreaterThanOrEqualTo(String property, Number number) {
+        return orGreaterThanOrEqualTo(true, property, number);
+    }
+
+    @Override
+    public ExampleCriteria lessThan(BooleanOperator type, Boolean condition, String property, Number number) {
+        if (condition) {
+            if (type.equals(BooleanOperator.OR)) {
+                orClassList.add(new LtSpecification(type, property, number));
+            } else {
+                andClassList.add(new LtSpecification(type, property, number));
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andLessThan(Boolean condition, String property, Number number) {
+        return lessThan(BooleanOperator.AND, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orLessThan(Boolean condition, String property, Number number) {
+        return lessThan(BooleanOperator.OR, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andLessThan(String property, Number number) {
+        return andLessThan(true, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orLessThan(String property, Number number) {
+        return orLessThan(true, property, number);
+    }
+
+    @Override
+    public ExampleCriteria lessThanOrEqualTo(BooleanOperator type, Boolean condition, String property, Number number) {
+        if (condition) {
+            if (type.equals(BooleanOperator.OR)) {
+                orClassList.add(new LeSpecification(type, property, number));
+            } else {
+                andClassList.add(new LeSpecification(type, property, number));
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andLessThanOrEqualTo(Boolean condition, String property, Number number) {
+        return lessThanOrEqualTo(BooleanOperator.AND, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orLessThanOrEqualTo(Boolean condition, String property, Number number) {
+        return lessThanOrEqualTo(BooleanOperator.OR, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andLessThanOrEqualTo(String property, Number number) {
+        return andLessThanOrEqualTo(true, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orLessThanOrEqualTo(String property, Number number) {
+        return orLessThanOrEqualTo(true, property, number);
+    }
+
+    @Override
+    public ExampleCriteria gt(BooleanOperator type, Boolean condition, String property, Number number) {
+        return greaterThan(type, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andGt(Boolean condition, String property, Number number) {
+        return andGreaterThan(condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orGt(Boolean condition, String property, Number number) {
+        return orGreaterThan(condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andGt(String property, Number number) {
+        return andGreaterThan(true, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orGt(String property, Number number) {
+        return orGreaterThan(true, property, number);
+    }
+
+    @Override
+    public ExampleCriteria ge(BooleanOperator type, Boolean condition, String property, Number number) {
+        return greaterThanOrEqualTo(type, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andGe(Boolean condition, String property, Number number) {
+        return andGreaterThanOrEqualTo(condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orGe(Boolean condition, String property, Number number) {
+        return orGreaterThanOrEqualTo(condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andGe(String property, Number number) {
+        return andGreaterThanOrEqualTo(property, number);
+    }
+
+    @Override
+    public ExampleCriteria orGe(String property, Number number) {
+        return orGreaterThanOrEqualTo(property, number);
+    }
+
+    @Override
+    public ExampleCriteria lt(BooleanOperator type, Boolean condition, String property, Number number) {
+        return lessThan(type, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andLt(Boolean condition, String property, Number number) {
+        return andLessThan(condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orLt(Boolean condition, String property, Number number) {
+        return orLessThan(condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andLt(String property, Number number) {
+        return andLessThan(property, number);
+    }
+
+    @Override
+    public ExampleCriteria orLt(String property, Number number) {
+        return orLessThan(property, number);
+    }
+
+    @Override
+    public ExampleCriteria le(BooleanOperator type, Boolean condition, String property, Number number) {
+        return lessThanOrEqualTo(type, condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andLe(Boolean condition, String property, Number number) {
+        return andLessThanOrEqualTo(condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria orLe(Boolean condition, String property, Number number) {
+        return orLessThanOrEqualTo(condition, property, number);
+    }
+
+    @Override
+    public ExampleCriteria andLe(String property, Number number) {
+        return andLessThanOrEqualTo(property, number);
+    }
+
+    @Override
+    public ExampleCriteria orLe(String property, Number number) {
+        return orLessThanOrEqualTo(property, number);
+    }
+
+    @Override
     public Predicate toPredicate(Root root, CriteriaQuery query, CriteriaBuilder cb) {
         From from = root;
         for (JoinClass c : joinClassList) {

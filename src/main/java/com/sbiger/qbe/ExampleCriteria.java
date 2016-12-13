@@ -83,13 +83,29 @@ public interface ExampleCriteria<T> extends Specification {
     ExampleCriteria<T> andNotEqual(String property, Object value);
     ExampleCriteria<T> orNotEqual(String property, Object value);
 
-//    ExampleCriteria<T> greaterThan();
+    ExampleCriteria<T> greaterThan(BooleanOperator type, Boolean condition, String property, Number number);
+    ExampleCriteria<T> andGreaterThan(Boolean condition, String property, Number number);
+    ExampleCriteria<T> orGreaterThan(Boolean condition, String property, Number number);
+    ExampleCriteria<T> andGreaterThan(String property, Number number);
+    ExampleCriteria<T> orGreaterThan(String property, Number number);
 
-//    ExampleCriteria<T> greaterThanOrEqualTo();
+    ExampleCriteria<T> greaterThanOrEqualTo(BooleanOperator type, Boolean condition, String property, Number number);
+    ExampleCriteria<T> andGreaterThanOrEqualTo(Boolean condition, String property, Number number);
+    ExampleCriteria<T> orGreaterThanOrEqualTo(Boolean condition, String property, Number number);
+    ExampleCriteria<T> andGreaterThanOrEqualTo(String property, Number number);
+    ExampleCriteria<T> orGreaterThanOrEqualTo(String property, Number number);
 
-//    ExampleCriteria<T> lessThan();
+    ExampleCriteria<T> lessThan(BooleanOperator type, Boolean condition, String property, Number number);
+    ExampleCriteria<T> andLessThan(Boolean condition, String property, Number number);
+    ExampleCriteria<T> orLessThan(Boolean condition, String property, Number number);
+    ExampleCriteria<T> andLessThan(String property, Number number);
+    ExampleCriteria<T> orLessThan(String property, Number number);
 
-//    ExampleCriteria<T> lessThanOrEqualTo();
+    ExampleCriteria<T> lessThanOrEqualTo(BooleanOperator type, Boolean condition, String property, Number number);
+    ExampleCriteria<T> andLessThanOrEqualTo(Boolean condition, String property, Number number);
+    ExampleCriteria<T> orLessThanOrEqualTo(Boolean condition, String property, Number number);
+    ExampleCriteria<T> andLessThanOrEqualTo(String property, Number number);
+    ExampleCriteria<T> orLessThanOrEqualTo(String property, Number number);
 
     ExampleCriteria<T> between(BooleanOperator type, Boolean condition, String property, Range range);
     ExampleCriteria<T> andBetween(Boolean condition, String property, Range range);
@@ -97,13 +113,29 @@ public interface ExampleCriteria<T> extends Specification {
     ExampleCriteria<T> andBetween(String property, Range range);
     ExampleCriteria<T> orBetween(String property, Range range);
 
-//    ExampleCriteria<T> gt();
+    ExampleCriteria<T> gt(BooleanOperator type, Boolean condition, String property, Number number);
+    ExampleCriteria<T> andGt(Boolean condition, String property, Number number);
+    ExampleCriteria<T> orGt(Boolean condition, String property, Number number);
+    ExampleCriteria<T> andGt(String property, Number number);
+    ExampleCriteria<T> orGt(String property, Number number);
 
-//    ExampleCriteria<T> ge();
+    ExampleCriteria<T> ge(BooleanOperator type, Boolean condition, String property, Number number);
+    ExampleCriteria<T> andGe(Boolean condition, String property, Number number);
+    ExampleCriteria<T> orGe(Boolean condition, String property, Number number);
+    ExampleCriteria<T> andGe(String property, Number number);
+    ExampleCriteria<T> orGe(String property, Number number);
 
-//    ExampleCriteria<T> lt();
+    ExampleCriteria<T> lt(BooleanOperator type, Boolean condition, String property, Number number);
+    ExampleCriteria<T> andLt(Boolean condition, String property, Number number);
+    ExampleCriteria<T> orLt(Boolean condition, String property, Number number);
+    ExampleCriteria<T> andLt(String property, Number number);
+    ExampleCriteria<T> orLt(String property, Number number);
 
-//    ExampleCriteria<T> le();
+    ExampleCriteria<T> le(BooleanOperator type, Boolean condition, String property, Number number);
+    ExampleCriteria<T> andLe(Boolean condition, String property, Number number);
+    ExampleCriteria<T> orLe(Boolean condition, String property, Number number);
+    ExampleCriteria<T> andLe(String property, Number number);
+    ExampleCriteria<T> orLe(String property, Number number);
 
 //    ExampleCriteria<T> neg();
 
