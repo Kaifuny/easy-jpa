@@ -29,18 +29,6 @@ public interface ExampleCriteria<T> extends Specification {
 
 //    ExampleCriteria<T> max();
 
-    ExampleCriteria<T> in(BooleanOperator type, Boolean condition, String property, Object[] value);
-    ExampleCriteria<T> andIn(Boolean condition, String property, Object[] value);
-    ExampleCriteria<T> orIn(Boolean condition, String property, Object[] value);
-    ExampleCriteria<T> andIn(String property, Object[] value);
-    ExampleCriteria<T> orIn(String property, Object[] value);
-
-    ExampleCriteria<T> notIn(BooleanOperator type, Boolean condition, String property, Object[] value);
-    ExampleCriteria<T> andNotIn(Boolean condition, String property, Object[] value);
-    ExampleCriteria<T> orNotIn(Boolean condition, String property, Object[] value);
-    ExampleCriteria<T> andNotIn(String property, Object[] value);
-    ExampleCriteria<T> orNotIn(String property, Object[] value);
-
 //    ExampleCriteria<T> greatest();
 
 //    ExampleCriteria<T> least();
@@ -63,13 +51,47 @@ public interface ExampleCriteria<T> extends Specification {
 
 //    ExampleCriteria<T> not();
 
-//    ExampleCriteria<T> isTrue();
+    ExampleCriteria<T> isTrue(BooleanOperator type, String property);
+    ExampleCriteria<T> andIsTrue(String property);
+    ExampleCriteria<T> orIsTrue(String property);
 
-//    ExampleCriteria<T> isFalse();
+    ExampleCriteria<T> isFalse(BooleanOperator type, String property);
+    ExampleCriteria<T> andIsFalse(String property);
+    ExampleCriteria<T> orIsFalse(String property);
 
-//    ExampleCriteria<T> isNull();
+    ExampleCriteria<T> isNull(BooleanOperator type, String property);
+    ExampleCriteria<T> andIsNull(String property);
+    ExampleCriteria<T> orIsNull(String property);
 
-//    ExampleCriteria<T> isNotNull();
+    ExampleCriteria<T> isNotNull(BooleanOperator type, String property);
+    ExampleCriteria<T> andIsNotNull(String property);
+    ExampleCriteria<T> orIsNotNull(String property);
+
+    ExampleCriteria<T> isEmpty(BooleanOperator type, String property);
+    ExampleCriteria<T> andIsEmpty(String property);
+    ExampleCriteria<T> orIsEmpty(String property);
+
+    ExampleCriteria<T> isNotEmpty(BooleanOperator type, String property);
+    ExampleCriteria<T> andIsNotEmpty(String property);
+    ExampleCriteria<T> orIsNotEmpty(String property);
+
+//    ExampleCriteria<T> size();
+//
+//    ExampleCriteria<T> isMember();
+//
+//    ExampleCriteria<T> isNotMember();
+
+    ExampleCriteria<T> in(BooleanOperator type, Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> andIn(Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> orIn(Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> andIn(String property, Object[] value);
+    ExampleCriteria<T> orIn(String property, Object[] value);
+
+    ExampleCriteria<T> notIn(BooleanOperator type, Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> andNotIn(Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> orNotIn(Boolean condition, String property, Object[] value);
+    ExampleCriteria<T> andNotIn(String property, Object[] value);
+    ExampleCriteria<T> orNotIn(String property, Object[] value);
 
     ExampleCriteria<T> equal(BooleanOperator type, Boolean condition, String property, Object value);
     ExampleCriteria<T> andEqual(Boolean condition, String property, Object value);
@@ -137,6 +159,18 @@ public interface ExampleCriteria<T> extends Specification {
     ExampleCriteria<T> andLe(String property, Number number);
     ExampleCriteria<T> orLe(String property, Number number);
 
+    ExampleCriteria<T> like(BooleanOperator type, Boolean condition, String property, String value);
+    ExampleCriteria<T> andLike(Boolean condition, String property, String value);
+    ExampleCriteria<T> orLike(Boolean condition, String property, String value);
+    ExampleCriteria<T> andLike(String property, String value);
+    ExampleCriteria<T> orLike(String property, String value);
+
+    ExampleCriteria<T> notLike(BooleanOperator type, Boolean condition, String property, String value);
+    ExampleCriteria<T> andNotLike(Boolean condition, String property, String value);
+    ExampleCriteria<T> orNotLike(Boolean condition, String property, String value);
+    ExampleCriteria<T> andNotLike(String property, String value);
+    ExampleCriteria<T> orNotLike(String property, String value);
+
 //    ExampleCriteria<T> neg();
 
 //    ExampleCriteria<T> prod();
@@ -160,28 +194,6 @@ public interface ExampleCriteria<T> extends Specification {
 //    ExampleCriteria<T> toBigDecimal();
 
 //    ExampleCriteria<T> toBigInteger();
-
-//    ExampleCriteria<T> isEmpty();
-
-//    ExampleCriteria<T> isNotEmpty();
-
-//    ExampleCriteria<T> size();
-
-//    ExampleCriteria<T> isMember();
-
-//    ExampleCriteria<T> isNotMember();
-
-    ExampleCriteria<T> like(BooleanOperator type, Boolean condition, String property, String value);
-    ExampleCriteria<T> andLike(Boolean condition, String property, String value);
-    ExampleCriteria<T> orLike(Boolean condition, String property, String value);
-    ExampleCriteria<T> andLike(String property, String value);
-    ExampleCriteria<T> orLike(String property, String value);
-
-    ExampleCriteria<T> notLike(BooleanOperator type, Boolean condition, String property, String value);
-    ExampleCriteria<T> andNotLike(Boolean condition, String property, String value);
-    ExampleCriteria<T> orNotLike(Boolean condition, String property, String value);
-    ExampleCriteria<T> andNotLike(String property, String value);
-    ExampleCriteria<T> orNotLike(String property, String value);
 
 //    ExampleCriteria<T> concat();
 

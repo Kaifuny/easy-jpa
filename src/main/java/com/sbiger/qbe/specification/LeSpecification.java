@@ -23,8 +23,12 @@ public class LeSpecification<T> extends AbstractSpecification<T> {
         this.type = type;
     }
 
+    private Predicate getPredicate(From root, CriteriaBuilder cb, String field, Number value) {
+        return null == value ? cb.isNull(root.get(field)) : cb.le(root.get(field), value);
+    }
+
     @Override
     public Predicate toPredicate(From root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-        return cb.le(root.get(property), number);
+        return getPredicate(root, cb, property, number);
     }
 }

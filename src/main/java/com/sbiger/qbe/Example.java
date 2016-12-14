@@ -1,6 +1,10 @@
 package com.sbiger.qbe;
 
 import com.sbiger.qbe.specification.*;
+import com.sbiger.qbe.specification.is.IsFalseSpecification;
+import com.sbiger.qbe.specification.is.IsNotNullSpecification;
+import com.sbiger.qbe.specification.is.IsNullSpecification;
+import com.sbiger.qbe.specification.is.IsTrueSpecification;
 import org.springframework.data.domain.Range;
 
 import javax.persistence.criteria.*;
@@ -54,6 +58,116 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     @Override
     public ExampleCriteria<T> or() {
         return this;
+    }
+
+    @Override
+    public ExampleCriteria isTrue(BooleanOperator type, String property) {
+        if (type.equals(BooleanOperator.OR)) {
+            orClassList.add(new IsTrueSpecification(type, property));
+        } else {
+            andClassList.add(new IsTrueSpecification(type, property));
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andIsTrue(String property) {
+        return isTrue(BooleanOperator.AND, property);
+    }
+
+    @Override
+    public ExampleCriteria orIsTrue(String property) {
+        return isTrue(BooleanOperator.OR, property);
+    }
+
+    @Override
+    public ExampleCriteria isFalse(BooleanOperator type, String property) {
+        if (type.equals(BooleanOperator.OR)) {
+            orClassList.add(new IsFalseSpecification(type, property));
+        } else {
+            andClassList.add(new IsFalseSpecification(type, property));
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andIsFalse(String property) {
+        return isFalse(BooleanOperator.AND, property);
+    }
+
+    @Override
+    public ExampleCriteria orIsFalse(String property) {
+        return isFalse(BooleanOperator.OR, property);
+    }
+
+    @Override
+    public ExampleCriteria isNull(BooleanOperator type, String property) {
+        if (type.equals(BooleanOperator.OR)) {
+            orClassList.add(new IsNullSpecification(type, property));
+        } else {
+            andClassList.add(new IsNullSpecification(type, property));
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andIsNull(String property) {
+        return isNull(BooleanOperator.AND, property);
+    }
+
+    @Override
+    public ExampleCriteria orIsNull(String property) {
+        return isNull(BooleanOperator.OR, property);
+    }
+
+    @Override
+    public ExampleCriteria isNotNull(BooleanOperator type, String property) {
+        if (type.equals(BooleanOperator.OR)) {
+            orClassList.add(new IsNotNullSpecification(type, property));
+        } else {
+            andClassList.add(new IsNotNullSpecification(type, property));
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andIsNotNull(String property) {
+        return isNotNull(BooleanOperator.AND, property);
+    }
+
+    @Override
+    public ExampleCriteria orIsNotNull(String property) {
+        return isNotNull(BooleanOperator.OR, property);
+    }
+
+    @Override
+    public ExampleCriteria isEmpty(BooleanOperator type, String property) {
+        return null;
+    }
+
+    @Override
+    public ExampleCriteria andIsEmpty(String property) {
+        return null;
+    }
+
+    @Override
+    public ExampleCriteria orIsEmpty(String property) {
+        return null;
+    }
+
+    @Override
+    public ExampleCriteria isNotEmpty(BooleanOperator type, String property) {
+        return null;
+    }
+
+    @Override
+    public ExampleCriteria andIsNotEmpty(String property) {
+        return null;
+    }
+
+    @Override
+    public ExampleCriteria orIsNotEmpty(String property) {
+        return null;
     }
 
     @Override
