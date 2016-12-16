@@ -32,7 +32,7 @@
     <dependencies>
         <!--
         For use with Spring Framework 4.2.x, we recommend Hibernate ORM up until 5.1.
-        You'll have to upgrade to Spring Framework 4.3 in order to pick up Hibernate
+        You'll have to upgrade to Spring Framework 4.3 in sort to pick up Hibernate
         ORM 5.2 (which is a pretty major upgrade anyway, not just in terms of integration
         with Spring).
         -->

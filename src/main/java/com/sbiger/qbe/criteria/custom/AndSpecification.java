@@ -1,6 +1,6 @@
-package com.sbiger.qbe.specification.custom;
+package com.sbiger.qbe.criteria.custom;
 
-import com.sbiger.qbe.specification.AbstractSpecification;
+import com.sbiger.qbe.criteria.AbstractSpecification;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.*;
@@ -8,10 +8,10 @@ import javax.persistence.criteria.*;
 /**
  * Created by sbiger on 2016-12-15.
  */
-public class OrSpecification<T> extends AbstractSpecification<T> {
+public class AndSpecification<T> extends AbstractSpecification<T> {
     private Specification specification;
 
-    public OrSpecification(Specification specification) {
+    public AndSpecification(Specification specification) {
         this.specification = specification;
     }
 

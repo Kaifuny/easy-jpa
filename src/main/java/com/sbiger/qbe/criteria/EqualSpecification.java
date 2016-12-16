@@ -1,14 +1,13 @@
-package com.sbiger.qbe.specification;
+package com.sbiger.qbe.criteria;
 
 import com.sbiger.qbe.ExampleCriteria;
-import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.*;
 
 /**
  * Created by sbiger on 2016-11-25.
  */
-public class EqualSpecification<T> extends AbstractSpecification{
+public class EqualSpecification<T> extends AbstractSpecification {
     private final String property;
 
     private final Object value;

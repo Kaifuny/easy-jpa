@@ -1,6 +1,7 @@
 package com.sbiger.qbe;
 
 import javax.persistence.criteria.JoinType;
+import javax.persistence.criteria.Order;
 
 /**
  * Example Base Object
@@ -19,5 +20,10 @@ public interface ExampleQuery<T>{
 
     Example<T> join(Class c, JoinType type);
 
+    Example<T> asc(String... properties);
+
+    Example<T> desc(String... properties);
+
     ExampleCriteria<T> or();
+
 }

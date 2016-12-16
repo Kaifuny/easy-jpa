@@ -6,6 +6,7 @@ import com.sbiger.qbe.ExampleCriteria;
 import com.sbiger.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.data.domain.Page;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -23,8 +24,8 @@ public class TestUserReponsitory {
 
     @Test
     public void testFindAll() throws Exception{
-        List<User> list = userService.findAll();
-        User user = list.get(0);
+        Page<User> list = userService.findAll();
+        User user = list.iterator().next();
         System.out.println(user.getName());
     }
 }

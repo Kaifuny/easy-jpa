@@ -1,11 +1,15 @@
 package com.sbiger.qbe;
 
-import com.sbiger.qbe.specification.*;
-import com.sbiger.qbe.specification.is.IsFalseSpecification;
-import com.sbiger.qbe.specification.is.IsNotNullSpecification;
-import com.sbiger.qbe.specification.is.IsNullSpecification;
-import com.sbiger.qbe.specification.is.IsTrueSpecification;
+import com.sbiger.qbe.criteria.*;
+import com.sbiger.qbe.criteria.custom.AndSpecification;
+import com.sbiger.qbe.criteria.custom.OrSpecification;
+import com.sbiger.qbe.criteria.is.IsFalseSpecification;
+import com.sbiger.qbe.criteria.is.IsNotNullSpecification;
+import com.sbiger.qbe.criteria.is.IsNullSpecification;
+import com.sbiger.qbe.criteria.is.IsTrueSpecification;
+import com.sbiger.qbe.criteria.sort.AscSpecification;
 import org.springframework.data.domain.Range;
+import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
@@ -18,11 +22,13 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     private List<JoinClass> joinClassList;
     private List<AbstractSpecification> orClassList;
     private List<AbstractSpecification> andClassList;
+    private List<AbstractSpecification> orderClassList;
 
     public Example(){
         this.joinClassList = new ArrayList<JoinClass>();
         this.orClassList = new ArrayList<AbstractSpecification>();
         this.andClassList = new ArrayList<AbstractSpecification>();
+        this.orderClassList = new ArrayList<AbstractSpecification>();
     }
 
     public static ExampleQuery create(){
@@ -56,7 +62,35 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     }
 
     @Override
+    public Example asc(String... properties) {
+        for (int i = 0; i < properties.length; i++) {
+            this.orderClassList.add(new AscSpecification(properties));
+        }
+        return this;
+    }
+
+    @Override
+    public Example desc(String... properties) {
+        this.orderClassList.add(new AscSpecification(properties));
+        return this;
+    }
+
+    @Override
     public ExampleCriteria<T> or() {
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria and(Specification specification) {
+        if (specification instanceof Specification)
+            andClassList.add(new AndSpecification(specification));
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria or(Specification specification) {
+        if (specification instanceof Specification)
+            orClassList.add(new OrSpecification(specification));
         return this;
     }
 
@@ -628,7 +662,7 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
         for (JoinClass c : joinClassList) {
             from = from.join(String.valueOf(c.getClassName()), c.getType());
         }
-        
+
         final From finalFrom = from;
         Predicate[] ands = this.andClassList.stream()
                 .map(spec -> spec.toPredicate(finalFrom, query, cb))
@@ -638,6 +672,9 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
                 .map(spec -> spec.toPredicate(finalFrom, query, cb))
                 .toArray(Predicate[]::new);
 
+        this.orderClassList.stream()
+                .map(spec -> spec.toPredicate(finalFrom, query, cb))
+                .toArray(Predicate[]::new);
         return cb.or(cb.and(ands), cb.or(ors));
     }
 

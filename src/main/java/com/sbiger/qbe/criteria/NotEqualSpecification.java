@@ -1,4 +1,4 @@
-package com.sbiger.qbe.specification;
+package com.sbiger.qbe.criteria;
 
 import com.sbiger.qbe.ExampleCriteria;
 

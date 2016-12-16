@@ -13,10 +13,6 @@ public interface ExampleCriteria<T> extends Specification {
         private BooleanOperator() {}
     }
 
-//    ExampleCriteria<T> asc();
-
-//    ExampleCriteria<T> desc();
-
 //    ExampleCriteria<T> orderby();
 
 //    ExampleCriteria<T> avg();
@@ -45,9 +41,9 @@ public interface ExampleCriteria<T> extends Specification {
 
 //    ExampleCriteria<T> any();
 
-//    ExampleCriteria<T> and();
+    ExampleCriteria<T> and(Specification specification);
 
-//    ExampleCriteria<T> or();
+    ExampleCriteria<T> or(Specification specification);
 
 //    ExampleCriteria<T> not();
 
