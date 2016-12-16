@@ -1,5 +1,6 @@
 package com.sbiger.qbe.criteria;
 
+import com.sbiger.qbe.AbstractSpecification;
 import com.sbiger.qbe.ExampleCriteria;
 import org.springframework.data.domain.Range;
 

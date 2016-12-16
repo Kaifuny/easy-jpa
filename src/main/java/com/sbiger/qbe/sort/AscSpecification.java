@@ -1,6 +1,6 @@
-package com.sbiger.qbe.criteria.sort;
+package com.sbiger.qbe.sort;
 
-import com.sbiger.qbe.criteria.AbstractSpecification;
+import com.sbiger.qbe.AbstractSpecification;
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +8,11 @@ import java.util.List;
 /**
  * Created by sbiger on 2016-12-16.
  */
-public class DescSpecification<T> extends AbstractSpecification<T> {
+public class AscSpecification<T> extends AbstractSpecification<T> {
 
     private final String[] property;
 
-    public DescSpecification(String... property) {
+    public AscSpecification(String... property) {
         this.property = property;
     }
 
@@ -21,7 +21,7 @@ public class DescSpecification<T> extends AbstractSpecification<T> {
         List<Order> list = new ArrayList<Order>();
         for (int i = 0; i < property.length; i++) {
             if (property[i] != null) {
-                Order order = cb.desc(root.get(property[i].trim()));
+                Order order = cb.asc(root.get(property[i].trim()));
                 list.add(order);
             }
         }

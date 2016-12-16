@@ -7,7 +7,7 @@ import com.sbiger.qbe.criteria.is.IsFalseSpecification;
 import com.sbiger.qbe.criteria.is.IsNotNullSpecification;
 import com.sbiger.qbe.criteria.is.IsNullSpecification;
 import com.sbiger.qbe.criteria.is.IsTrueSpecification;
-import com.sbiger.qbe.criteria.sort.AscSpecification;
+import com.sbiger.qbe.sort.AscSpecification;
 import org.springframework.data.domain.Range;
 import org.springframework.data.jpa.domain.Specification;
 

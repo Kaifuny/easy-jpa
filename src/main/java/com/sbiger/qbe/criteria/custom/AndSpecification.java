@@ -1,6 +1,6 @@
 package com.sbiger.qbe.criteria.custom;
 
-import com.sbiger.qbe.criteria.AbstractSpecification;
+import com.sbiger.qbe.AbstractSpecification;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.*;

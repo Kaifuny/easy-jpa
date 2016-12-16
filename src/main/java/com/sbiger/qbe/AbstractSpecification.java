@@ -1,4 +1,4 @@
-package com.sbiger.qbe.criteria;
+package com.sbiger.qbe;
 
 import org.springframework.data.jpa.domain.Specification;
 
