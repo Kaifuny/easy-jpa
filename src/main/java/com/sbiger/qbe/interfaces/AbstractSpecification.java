@@ -1,4 +1,4 @@
-package com.sbiger.qbe;
+package com.sbiger.qbe.interfaces;
 
 import org.springframework.data.jpa.domain.Specification;
 

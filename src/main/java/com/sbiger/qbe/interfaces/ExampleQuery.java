@@ -1,7 +1,8 @@
-package com.sbiger.qbe;
+package com.sbiger.qbe.interfaces;
+
+import com.sbiger.qbe.Example;
 
 import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.Order;
 
 /**
  * Example Base Object

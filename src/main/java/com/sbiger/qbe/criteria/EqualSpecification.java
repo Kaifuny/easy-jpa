@@ -1,7 +1,7 @@
 package com.sbiger.qbe.criteria;
 
-import com.sbiger.qbe.AbstractSpecification;
-import com.sbiger.qbe.ExampleCriteria;
+import com.sbiger.qbe.interfaces.AbstractSpecification;
+import com.sbiger.qbe.interfaces.ExampleCriteria;
 
 import javax.persistence.criteria.*;
 

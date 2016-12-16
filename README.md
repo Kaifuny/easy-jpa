@@ -1,5 +1,5 @@
 # sbiger-jpa-qbe
-Java Persistence API(JPA) on Query By Example(QBE)
+Java Persistence API(JPA) on Query By Example(QBE)  
 **Base on Spring Data JPA**
 
 # Java Version

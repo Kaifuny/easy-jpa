@@ -1,8 +1,6 @@
 package com.sbiger.test;
 
 import com.sbiger.entity.User;
-import com.sbiger.qbe.Example;
-import com.sbiger.qbe.ExampleCriteria;
 import com.sbiger.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by sbiger on 2016-11-25.

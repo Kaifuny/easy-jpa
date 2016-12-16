@@ -1,6 +1,6 @@
 package com.sbiger.qbe.sort;
 
-import com.sbiger.qbe.AbstractSpecification;
+import com.sbiger.qbe.interfaces.AbstractSpecification;
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.List;
