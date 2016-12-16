@@ -22,7 +22,8 @@ public class UserService {
         Example<User> example = new Example<User>();
 
         example.or()
-                .andEqual("id", 1);
+                .andEqual("id", 1)
+                .orEqual("id", 2);
 
         example.asc("id","name");
         return userReponsitory.findAll(example, new PageRequest(0, 1));

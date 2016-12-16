@@ -14,17 +14,24 @@ Java Persistence API(JPA) on Query By Example(QBE)
     
     /*
     SQL:
-        select * from user
+        select * from
+            user 
         where
-            id = 1
-            or id = 2
+            id=1 
+            or id=2 
+        order by
+            id asc,
+            name asc 
+        limit ?
     */
     public List<User> findAll(){
         Example<User> example = new Example<User>();
         example.or()
-                .andEqual("id","1")
-                .orEqual("id","2");
-        return userReponsitory.findAll(example);
+                .andEqual("id", 1)
+                .orEqual("id", 2);
+
+        example.asc("id","name");
+        return userReponsitory.findAll(example, new PageRequest(0, 1));
     }
 ```
 
