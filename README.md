@@ -19,7 +19,10 @@ Java Persistence API(JPA) on Query By Example(QBE)
         where
             id=1 
             or id=2 
-        order by
+        group by  
+            id,  
+            name   
+        order by  
             id asc,
             name asc 
         limit ?
@@ -29,7 +32,7 @@ Java Persistence API(JPA) on Query By Example(QBE)
         example.or()
                 .andEqual("id", 1)
                 .orEqual("id", 2);
-
+        example.groupBy("id","name");
         example.asc("id","name");
         return userReponsitory.findAll(example, new PageRequest(0, 1));
     }

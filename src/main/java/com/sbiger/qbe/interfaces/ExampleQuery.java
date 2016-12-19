@@ -25,6 +25,8 @@ public interface ExampleQuery<T>{
 
     Example<T> desc(String... properties);
 
+    Example<T> groupBy(String... properties);
+
     ExampleCriteria<T> or();
 
 }

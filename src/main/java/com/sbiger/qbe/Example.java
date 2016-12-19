@@ -7,6 +7,7 @@ import com.sbiger.qbe.criteria.is.IsFalseSpecification;
 import com.sbiger.qbe.criteria.is.IsNotNullSpecification;
 import com.sbiger.qbe.criteria.is.IsNullSpecification;
 import com.sbiger.qbe.criteria.is.IsTrueSpecification;
+import com.sbiger.qbe.group.GroupBySpecification;
 import com.sbiger.qbe.interfaces.AbstractSpecification;
 import com.sbiger.qbe.interfaces.ExampleCriteria;
 import com.sbiger.qbe.interfaces.ExampleQuery;
@@ -26,12 +27,14 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     private List<AbstractSpecification> orClassList;
     private List<AbstractSpecification> andClassList;
     private List<AbstractSpecification> orderClassList;
+    private List<AbstractSpecification> groupClassList;
 
     public Example(){
         this.joinClassList = new ArrayList<JoinClass>();
         this.orClassList = new ArrayList<AbstractSpecification>();
         this.andClassList = new ArrayList<AbstractSpecification>();
         this.orderClassList = new ArrayList<AbstractSpecification>();
+        this.groupClassList = new ArrayList<AbstractSpecification>();
     }
 
     public static ExampleQuery create(){
@@ -76,6 +79,12 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     public Example desc(String... properties) {
         this.orderClassList.add(new AscSpecification(properties));
         return this;
+    }
+
+    @Override
+    public Example groupBy(String... properties) {
+        this.groupClassList.add(new GroupBySpecification(properties));
+        return null;
     }
 
     @Override
@@ -678,6 +687,11 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
         this.orderClassList.stream()
                 .map(spec -> spec.toPredicate(finalFrom, query, cb))
                 .toArray(Predicate[]::new);
+
+        this.groupClassList.stream()
+                .map(spec -> spec.toPredicate(finalFrom, query, cb))
+                .toArray(Predicate[]::new);
+
         return cb.or(cb.and(ands), cb.or(ors));
     }
 

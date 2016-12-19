@@ -24,6 +24,8 @@ public class UserService {
                 .andEqual("id", 1)
                 .orEqual("id", 2);
 
+        example.groupBy("id","name");
+
         example.asc("id","name");
         return userReponsitory.findAll(example, new PageRequest(0, 1));
     }
