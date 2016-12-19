@@ -670,11 +670,13 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
 
     @Override
     public Predicate toPredicate(Root root, CriteriaQuery query, CriteriaBuilder cb) {
+        // JOIN
         From from = root;
         for (JoinClass c : joinClassList) {
             from = from.join(String.valueOf(c.getClassName()), c.getType());
         }
 
+        // WHERE
         final From finalFrom = from;
         Predicate[] ands = this.andClassList.stream()
                 .map(spec -> spec.toPredicate(finalFrom, query, cb))
@@ -683,12 +685,13 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
         Predicate[] ors = this.orClassList.stream()
                 .map(spec -> spec.toPredicate(finalFrom, query, cb))
                 .toArray(Predicate[]::new);
-
-        this.orderClassList.stream()
+        // GROUP BY
+        this.groupClassList.stream()
                 .map(spec -> spec.toPredicate(finalFrom, query, cb))
                 .toArray(Predicate[]::new);
 
-        this.groupClassList.stream()
+        // ORDER
+        this.orderClassList.stream()
                 .map(spec -> spec.toPredicate(finalFrom, query, cb))
                 .toArray(Predicate[]::new);
 
