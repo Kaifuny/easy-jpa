@@ -1,8 +1,17 @@
 # sbiger-jpa-qbe
 Java Persistence API(JPA) on Query By Example(QBE)  
 **Base on Spring Data JPA**  
-JpaRepository<?, Serializable> , JpaSpecificationExecutor<?> isn't support selection limit  
-suggest to implements SimpleJpaRespository get EntityManager;
+
+# Features
+* Support and/or logic operation
+* Support is(Empty/Boolean/Null)
+* Support Equal/NotEqual/In/NotIn/Like/NotLike
+* Support gt/ge/lt/le/between
+* Support join query
+* Support group by
+* Support custom specification.
+* Support pagination  
+**more features coming soon……**
 
 # Java Version
 ```
