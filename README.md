@@ -1,6 +1,8 @@
 # sbiger-jpa-qbe
 Java Persistence API(JPA) on Query By Example(QBE)  
-**Base on Spring Data JPA**
+**Base on Spring Data JPA**  
+JpaRepository<?, Serializable> , JpaSpecificationExecutor<?> isn't support selection limit  
+suggest to implements SimpleJpaRespository get EntityManager;
 
 # Java Version
 ```
