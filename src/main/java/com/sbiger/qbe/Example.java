@@ -37,10 +37,6 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
         this.groupClassList = new ArrayList<AbstractSpecification>();
     }
 
-    public static ExampleQuery create(){
-        return new Example();
-    }
-
     @Override
     public Example<T> join(Class c) {
         return innerJoin(c);
