@@ -39,7 +39,7 @@ Java Persistence API(JPA) on Query By Example(QBE)
         limit ?
     */
     public List<User> findAll(){
-        Example<User> example = new Example<User>();
+        Example<User> example = ExampleBuilder.create();
         example.or()
                 .andEqual("id", 1)
                 .orEqual("id", 2);
