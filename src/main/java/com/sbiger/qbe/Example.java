@@ -681,6 +681,7 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
         Predicate[] ors = this.orClassList.stream()
                 .map(spec -> spec.toPredicate(finalFrom, query, cb))
                 .toArray(Predicate[]::new);
+
         // GROUP BY
         this.groupClassList.stream()
                 .map(spec -> spec.toPredicate(finalFrom, query, cb))
