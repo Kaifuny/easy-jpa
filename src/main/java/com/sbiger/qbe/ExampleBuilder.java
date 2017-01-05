@@ -10,7 +10,7 @@ public class ExampleBuilder {
         return new Example();
     }
 
-    public static ExampleExtend create(EntityManager em) {
-        return new ExampleExtend(em);
+    public static ExampleQuery create(EntityManager em) {
+        return new ExampleQuery(em);
     }
 }
