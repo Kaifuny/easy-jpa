@@ -11,7 +11,8 @@ Java Persistence API(JPA) on Query By Example(QBE)
 * Support group by
 * Support custom specification.
 * Support pagination  
-**more features coming soon……**
+
+    **more features coming soon**
 
 # Java Version
 ```

@@ -11,6 +11,4 @@ public class ExampleExtend<T> extends Example<T> {
     public ExampleExtend(EntityManager em) {
         this.em = em;
     }
-
-
 }
