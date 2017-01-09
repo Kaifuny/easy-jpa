@@ -2,6 +2,9 @@
 Java Persistence API(JPA) on Query By Example(QBE)  
 **Base on Spring Data JPA**  
 
+# Version
+**0.0.1**
+
 # Features
 * Support and/or logic operation
 * Support is(Empty/Boolean/Null)
