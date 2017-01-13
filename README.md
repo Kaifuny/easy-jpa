@@ -5,6 +5,10 @@ Java Persistence API(JPA) on Query By Example(QBE)
 # Version
 **0.0.1**
 
+## Next Version
+* distinct support
+* math support
+
 # Features
 * Support and/or logic operation
 * Support is(Empty/Boolean/Null)
