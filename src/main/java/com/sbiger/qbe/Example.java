@@ -3,10 +3,7 @@ package com.sbiger.qbe;
 import com.sbiger.qbe.criteria.*;
 import com.sbiger.qbe.criteria.custom.AndSpecification;
 import com.sbiger.qbe.criteria.custom.OrSpecification;
-import com.sbiger.qbe.criteria.is.IsFalseSpecification;
-import com.sbiger.qbe.criteria.is.IsNotNullSpecification;
-import com.sbiger.qbe.criteria.is.IsNullSpecification;
-import com.sbiger.qbe.criteria.is.IsTrueSpecification;
+import com.sbiger.qbe.criteria.is.*;
 import com.sbiger.qbe.group.GroupBySpecification;
 import com.sbiger.qbe.interfaces.AbstractSpecification;
 import com.sbiger.qbe.interfaces.ExampleCriteria;
@@ -184,32 +181,87 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
 
     @Override
     public ExampleCriteria isEmpty(BooleanOperator type, String property) {
-        return null;
+        if (type.equals(BooleanOperator.OR)) {
+            orClassList.add(new IsEmptySpecification(type, property));
+        } else {
+            andClassList.add(new IsEmptySpecification(type, property));
+        }
+        return this;
     }
 
     @Override
     public ExampleCriteria andIsEmpty(String property) {
-        return null;
+        return isEmpty(BooleanOperator.AND, property);
     }
 
     @Override
     public ExampleCriteria orIsEmpty(String property) {
-        return null;
+        return isEmpty(BooleanOperator.OR, property);
     }
 
     @Override
     public ExampleCriteria isNotEmpty(BooleanOperator type, String property) {
-        return null;
+        if (type.equals(BooleanOperator.OR)) {
+            orClassList.add(new IsNotEmptySpecification(type, property));
+        } else {
+            andClassList.add(new IsNotEmptySpecification(type, property));
+        }
+        return this;
     }
 
     @Override
     public ExampleCriteria andIsNotEmpty(String property) {
-        return null;
+        return isNotEmpty(BooleanOperator.AND, property);
     }
 
     @Override
     public ExampleCriteria orIsNotEmpty(String property) {
+        return isNotEmpty(BooleanOperator.OR, property);
+    }
+
+    @Override
+    public ExampleCriteria size() {
         return null;
+    }
+
+    @Override
+    public ExampleCriteria isMember(BooleanOperator type, String property, Object object) {
+        if (type.equals(BooleanOperator.OR)) {
+            orClassList.add(new IsMemberSpecification(type, property, object));
+        } else {
+            andClassList.add(new IsMemberSpecification(type, property, object));
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andIsMember(String property, Object object) {
+        return isMember(BooleanOperator.AND, property, object);
+    }
+
+    @Override
+    public ExampleCriteria orIsMember(String property, Object object) {
+        return isMember(BooleanOperator.OR, property, object);
+    }
+
+    @Override
+    public ExampleCriteria isNotMember(BooleanOperator type, String property, Object object) {
+        if (type.equals(BooleanOperator.OR)) {
+            orClassList.add(new IsNotMemberSpecification(type, property, object));
+        } else {
+            andClassList.add(new IsNotMemberSpecification(type, property, object));
+        }
+        return this;
+    }
+
+    @Override
+    public ExampleCriteria andIsNotMember(String property, Object object) {
+        return isNotMember(BooleanOperator.AND, property, object);
+    }
+
+    @Override
+    public ExampleCriteria orIsNotMember(String property, Object object) {
+        return isNotMember(BooleanOperator.OR, property, object);
     }
 
     @Override

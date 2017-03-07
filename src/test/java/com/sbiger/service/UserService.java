@@ -19,13 +19,10 @@ public class UserService {
 
     public Page<User> findAll(){
         Example<User> example = new Example<User>();
-
         example.or()
                 .andEqual("id", 1)
                 .orEqual("id", 2);
-
         example.groupBy("id","name");
-
         example.asc("id","name");
         return userReponsitory.findAll(example, new PageRequest(0, 1));
     }
