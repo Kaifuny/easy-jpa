@@ -220,11 +220,6 @@ public class Example<T> implements ExampleQuery, ExampleCriteria {
     }
 
     @Override
-    public ExampleCriteria size() {
-        return null;
-    }
-
-    @Override
     public ExampleCriteria isMember(BooleanOperator type, String property, Object object) {
         if (type.equals(BooleanOperator.OR)) {
             orClassList.add(new IsMemberSpecification(type, property, object));

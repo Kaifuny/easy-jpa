@@ -71,8 +71,6 @@ public interface ExampleCriteria<T> extends Specification {
     ExampleCriteria<T> andIsNotEmpty(String property);
     ExampleCriteria<T> orIsNotEmpty(String property);
 
-    ExampleCriteria<T> size();
-
     ExampleCriteria<T> isMember(BooleanOperator type, String property, Object object);
     ExampleCriteria<T> andIsMember(String property, Object object);
     ExampleCriteria<T> orIsMember(String property, Object object);
