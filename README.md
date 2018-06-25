@@ -14,7 +14,6 @@ Java Persistence API(JPA) on Query By Example(QBE)
 * Support is(Empty/Boolean/Null)
 * Support Equal/NotEqual/In/NotIn/Like/NotLike
 * Support gt/ge/lt/le/between
-* Support join query
 * Support group by
 * Support custom specification.
 * Support pagination  
