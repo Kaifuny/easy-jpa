@@ -1,4 +1,4 @@
-# sbiger-jpa-qbe
+# easy-jpa
 Java Persistence API(JPA) on Query By Example(QBE)  
 **Base on Spring Data JPA**  
 
